@@ -895,6 +895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNameText: {fileID: 1238173335}
   UIText: {fileID: 501929472}
+  placeholderText: {fileID: 1165899048}
 --- !u!1 &1165899046
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,7 +966,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter text...
+  m_Text: Enter Name...
 --- !u!222 &1165899049
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1355,7 +1356,7 @@ MonoBehaviour:
   m_LineType: 0
   m_HideMobileInput: 0
   m_CharacterValidation: 0
-  m_CharacterLimit: 0
+  m_CharacterLimit: 10
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []

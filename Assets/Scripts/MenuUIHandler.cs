@@ -13,6 +13,8 @@ public class MenuUIHandler : MonoBehaviour
     private Text playerNameText;
     [SerializeField]
     private Text UIText;
+    [SerializeField]
+    private Text placeholderText;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +29,12 @@ public class MenuUIHandler : MonoBehaviour
 
     public void StartNew()
     {
+        if (playerNameText.text == "")
+            return;
+
         DataManager.Instance.currentPlayerName = playerNameText.text;
-        Debug.Log("Load game scene");
+        SceneManager.LoadScene(1);
+        Debug.Log(Application.persistentDataPath);
     }
 
     public void Exit()
