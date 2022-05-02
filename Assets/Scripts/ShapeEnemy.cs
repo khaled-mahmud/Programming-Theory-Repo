@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// INHERITANCE
 public class ShapeEnemy : Enemy
 {
     [SerializeField]
@@ -24,7 +25,7 @@ public class ShapeEnemy : Enemy
             OnCollisionWithPlayer(collision.gameObject);
     }
 
-    // Method OverRidding
+    // POLYMORPHISM
     public override void OnCollisionWithPlayer(GameObject player)
     {
         player.GetComponent<MeshFilter>().mesh = gameObject.GetComponent<MeshFilter>().mesh;

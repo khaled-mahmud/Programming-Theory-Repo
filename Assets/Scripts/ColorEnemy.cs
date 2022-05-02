@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// INHERITANCE
 public class ColorEnemy : Enemy
 {
     // Start is called before the first frame update
@@ -26,7 +27,7 @@ public class ColorEnemy : Enemy
             OnCollisionWithPlayer(collision.gameObject);
     }
 
-    // Method OverRidding
+    // POLYMORPHISM
     public override void OnCollisionWithPlayer(GameObject player)
     {
         player.GetComponent<MeshRenderer>().material.color = GetComponent<MeshRenderer>().material.color;

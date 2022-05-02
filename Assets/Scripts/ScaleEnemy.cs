@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// INHERITANCE
 public class ScaleEnemy : Enemy
 {
     // Start is called before the first frame update
@@ -27,7 +28,7 @@ public class ScaleEnemy : Enemy
             OnCollisionWithPlayer(collision.gameObject);
     }
 
-    // Method OverRidding
+    // POLYMORPHISM
     public override void OnCollisionWithPlayer(GameObject player)
     {
         player.transform.localScale = transform.localScale;

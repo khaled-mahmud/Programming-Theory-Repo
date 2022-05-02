@@ -6,7 +6,7 @@ using System.IO;
 
 public class DataManager : MonoBehaviour
 {
-    public static DataManager Instance { get; private set; } // Encapsulation (private setters)
+    public static DataManager Instance { get; private set; } // ENCAPSULATION
     public string playerName { get; set; }
     public int score { get; set; }
     public string currentPlayerName { get; set; }
@@ -31,7 +31,7 @@ public class DataManager : MonoBehaviour
         public int score;
     }
 
-    // Abstraction
+    // ABSTRACTION
     public void SavePlayerData()
     {
         SaveData data = new SaveData();
@@ -42,7 +42,7 @@ public class DataManager : MonoBehaviour
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
     }
 
-    // Abstraction
+    // ABSTRACTION
     public void LoadPlayerData()
     {
         string path = Application.persistentDataPath + "/savefile.json";

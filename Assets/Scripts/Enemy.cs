@@ -10,9 +10,11 @@ public class Enemy : MonoBehaviour
     private int pointValue;
 
     private float m_speed = 2;
+
+    // ENCAPSULATION
     public float speed
     {
-        get { return m_speed; } // getter returns backing field
+        get { return m_speed; }
         set
         {
             if (value < 0.0f)
@@ -23,7 +25,7 @@ public class Enemy : MonoBehaviour
             {
                 m_speed = value;
             }
-        } // setter uses backing field
+        }
     }
     private float maxMoveZAxis = 8f;
     public UnityEvent<int> onDestroyed;
@@ -42,7 +44,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-    // Method Overloading
+    // POLYMORPHISM
     public virtual void OnCollisionWithPlayer(GameObject player)
     {
         // execute impact on player

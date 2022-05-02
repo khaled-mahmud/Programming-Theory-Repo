@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UpdateGameUI(); // Abstraction
+        UpdateGameUI(); // ABSTRACTION
         InvokeRepeating("InstantiatePrefab", 1, 2);
         m_GameOver = false;
         // MaxMoveXAxis = 5.0f;
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         GameOverText.SetActive(true);
         backButton.SetActive(true);
         m_GameOver = true;
-        UpdateGameUI(); // Abstraction
+        UpdateGameUI(); // ABSTRACTION
     }
 
     private void UpdateGameUI()
