@@ -687,8 +687,11 @@ MonoBehaviour:
   GameOverText: {fileID: 482014894}
   playerNameScoreText: {fileID: 695093739}
   backButton: {fileID: 1098798579}
-  enemyPrefab: {fileID: 4692451435354323027, guid: 1c1bb764903109e40bfb3052931d0d14, type: 3}
-  m_GameOver: 0
+  enemyPrefabs:
+  - {fileID: -7301242365124593891, guid: 10ce7cf888a337c49a851b99bdcc276f, type: 3}
+  - {fileID: 3451917343401924063, guid: 30ea5cea47871fe41be9d03493f854dd, type: 3}
+  - {fileID: 7529022307390998167, guid: 1c1bb764903109e40bfb3052931d0d14, type: 3}
+  MaxMoveXAxis: 5
 --- !u!4 &1144603543
 Transform:
   m_ObjectHideFlags: 0
@@ -829,7 +832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  maxMoveXAxis: 4
+  maxMoveXAxis: 5
   gameManager: {fileID: 1144603542}
 --- !u!1 &1471543252
 GameObject:

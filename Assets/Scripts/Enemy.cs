@@ -8,10 +8,24 @@ public class Enemy : MonoBehaviour
     private GameManager gameManager;
     [SerializeField]
     private int pointValue;
-    [SerializeField]
-    protected float speed;
-    [SerializeField]
-    private float maxMoveZAxis;
+
+    private float m_speed = 2;
+    public float speed
+    {
+        get { return m_speed; } // getter returns backing field
+        set
+        {
+            if (value < 0.0f)
+            {
+                Debug.LogError("You can't set a negative value for speed!");
+            }
+            else
+            {
+                m_speed = value;
+            }
+        } // setter uses backing field
+    }
+    private float maxMoveZAxis = 8f;
     public UnityEvent<int> onDestroyed;
 
 
@@ -19,40 +33,41 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
+    }
+
+    // Method Overloading
+    public virtual void OnCollisionWithPlayer(GameObject player)
+    {
+        // execute impact on player
+        onDestroyed.Invoke(pointValue);
+        Destroy(gameObject);
+    }
+
+    protected void Move()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         Vector3 enemyPosition = transform.position;
 
         if (enemyPosition.z > -maxMoveZAxis)
         {
-            enemyPosition.z -= speed * Time.deltaTime;
-            transform.position = enemyPosition;
+            if (!gameManager.m_GameOver)
+            {
+                enemyPosition.z -= m_speed * Time.deltaTime;
+                transform.position = enemyPosition;
+            }
         }
         else
         {
-            gameManager.GameOver();
+            if (gameManager != null) gameManager.GameOver();
             Destroy(gameObject);
         }
-
     }
 
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            onDestroyed.Invoke(pointValue);
-            Destroy(gameObject);
-        }
-
-    }
-
-    // void OnDestroy()
-    // {
-    //     onDestroyed.Invoke(pointValue);
-    //     gameManager.GameOver();
-    // }
 }

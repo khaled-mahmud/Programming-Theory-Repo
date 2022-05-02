@@ -15,15 +15,19 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject backButton;
     [SerializeField]
-    private Enemy enemyPrefab;
+    private Enemy[] enemyPrefabs;
     private int m_Points;
-    public bool m_GameOver = false;
+    public bool m_GameOver { get; set; }
+    private float maxMoveXAxis = 5.0f; //{ get; set; }
+    private float timeCount = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
         UpdateGameUI(); // Abstraction
-        InvokeRepeating("InstantiatePrefab", 1, 5);
+        InvokeRepeating("InstantiatePrefab", 1, 2);
+        m_GameOver = false;
+        // MaxMoveXAxis = 5.0f;
     }
 
     // Update is called once per frame
@@ -37,12 +41,16 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
+
+        timeCount += Time.deltaTime * 0.1f;
     }
 
     private void InstantiatePrefab()
     {
-        var enemy = Instantiate(enemyPrefab, new Vector3(0, 2, 4), Quaternion.identity);
+        Vector3 spawnPos = new Vector3(Random.Range(-maxMoveXAxis, maxMoveXAxis), 2, 8);
+        var enemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPos, Quaternion.identity);
         enemy.onDestroyed.AddListener(AddPoint);
+        enemy.speed += timeCount;
     }
 
     private void AddPoint(int point)
